@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
-
+//Il est important d’utiliser l’annotation @RestController au niveau de la classe. Cela automatise le retour au format JSON.
 @RestController
 public class EmployeeController {
 	
@@ -23,20 +23,26 @@ public class EmployeeController {
 	public Employee createEmployee(@RequestBody Employee employee) {
 		return employeeService.saveEmployee(employee);
 	}
-	
-	
+
 	/**
 	 * Read - Get one employee 
 	 * @param id The id of the employee
 	 * @return An Employee object full filled
 	 */
+	/** Il était comme cell-ci
+	 * if(employee.isPresent()) {
+	 * 			return employee.get();
+	 *                } else {
+	 * 			return null;
+	 *        }
+	 */
 	@GetMapping("/employee/{id}")
 	public Employee getEmployee(@PathVariable("id") final Long id) {
 		Optional<Employee> employee = employeeService.getEmployee(id);
-		if(employee.isPresent()) {
-			return employee.get();
-		} else {
+		if (!employee.isPresent()) {
 			return null;
+		} else {
+			return employee.get();
 		}
 	}
 	
@@ -67,7 +73,7 @@ public class EmployeeController {
 			}
 			String lastName = employee.getLastName();
 			if(lastName != null) {
-				currentEmployee.setLastName(lastName);;
+				currentEmployee.setLastName(lastName);
 			}
 			String mail = employee.getMail();
 			if(mail != null) {
@@ -75,7 +81,7 @@ public class EmployeeController {
 			}
 			String password = employee.getPassword();
 			if(password != null) {
-				currentEmployee.setPassword(password);;
+				currentEmployee.setPassword(password);
 			}
 			employeeService.saveEmployee(currentEmployee);
 			return currentEmployee;

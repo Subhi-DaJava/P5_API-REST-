@@ -12,7 +12,7 @@
 	<artifactId>API-SpringBoot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>API-SpringBoot</name>
-	<description>Création d&apos;une API REST avec Spring Boot</description>
+	<description>Une API REST avec Spring Boot</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
@@ -25,15 +25,9 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>

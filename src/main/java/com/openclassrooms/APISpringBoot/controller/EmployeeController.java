@@ -29,20 +29,27 @@ public class EmployeeController {
 	 * @param id The id of the employee
 	 * @return An Employee object full filled
 	 */
+
 	/** Il était comme cell-ci
 	 * if(employee.isPresent()) {
 	 * 			return employee.get();
 	 *                } else {
 	 * 			return null;
 	 *        }
+	 *  proposé, ça ne marche pas
+	 *  if (!employee.isPresent()) {
+	 * 			return null;
+	 *                } else {
+	 * 			return employee.get();
+	 *        }* 	}
 	 */
 	@GetMapping("/employee/{id}")
 	public Employee getEmployee(@PathVariable("id") final Long id) {
 		Optional<Employee> employee = employeeService.getEmployee(id);
-		if (!employee.isPresent()) {
-			return null;
-		} else {
+		if (employee.isPresent()) {
 			return employee.get();
+		} else {
+			return null;
 		}
 	}
 	
